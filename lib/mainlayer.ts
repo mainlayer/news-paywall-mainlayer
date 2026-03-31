@@ -94,6 +94,7 @@ export const mainlayer = {
   entitlements: {
     /**
      * Check whether a wallet has paid for a resource.
+     * Includes timeout to prevent hanging on network issues.
      */
     async check(params: {
       resource_id: string;
@@ -103,16 +104,29 @@ export const mainlayer = {
       url.searchParams.set("resource_id", params.resource_id);
       url.searchParams.set("payer_wallet", params.payer_wallet);
 
-      const response = await fetch(url.toString(), {
-        headers: authHeaders(),
-      });
-
-      if (!response.ok) {
-        const error = await response.text();
-        throw new Error(`Failed to check entitlement: ${error}`);
+      let response: Response;
+      try {
+        response = await fetch(url.toString(), {
+          headers: authHeaders(),
+          signal: AbortSignal.timeout(10000), // 10s timeout
+        });
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        throw new Error(`Mainlayer API unreachable: ${message}`);
       }
 
-      return response.json() as Promise<EntitlementCheckResult>;
+      if (!response.ok) {
+        const error = await response.text().catch(() => `(HTTP ${response.status})`);
+        throw new Error(`Entitlement check failed: ${error}`);
+      }
+
+      const data = await response.json();
+      // Validate the response structure
+      if (typeof data.has_access !== 'boolean') {
+        throw new Error('Invalid entitlement response: missing has_access field');
+      }
+
+      return data as EntitlementCheckResult;
     },
   },
 
