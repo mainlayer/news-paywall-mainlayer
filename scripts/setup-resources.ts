@@ -11,7 +11,7 @@
 
 import { getAllArticles } from "../lib/articles";
 
-const MAINLAYER_BASE_URL = "https://api.mainlayer.xyz";
+const MAINLAYER_BASE_URL = "https://api.mainlayer.fr";
 
 async function createResource(params: {
   name: string;

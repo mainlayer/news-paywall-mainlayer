@@ -105,7 +105,7 @@ describe("buildPaymentRequired", () => {
     expect(payload.error).toBe("payment_required");
     expect(payload.resource_id).toBe("res_test_123");
     expect(payload.price_usdc).toBe(0.01);
-    expect(payload.pay_endpoint).toBe("https://api.mainlayer.xyz/pay");
+    expect(payload.pay_endpoint).toBe("https://api.mainlayer.fr/pay");
     expect(payload.info_endpoint).toBe("/api/articles/test-article/info");
     expect(payload.message).toContain("$0.01");
   });
@@ -117,7 +117,7 @@ describe("buildPaymentRequired", () => {
       price_usdc: 0.01,
       slug: "my-article",
     });
-    expect(payload.pay_endpoint).toContain("mainlayer.xyz");
+    expect(payload.pay_endpoint).toContain("mainlayer.fr");
   });
 });
 
@@ -228,7 +228,7 @@ describe("mainlayer client", () => {
     await mainlayer.entitlements.check({ resource_id: "r1", payer_wallet: "w1" });
 
     const [url] = vi.mocked(fetch).mock.calls[0] as [string, ...unknown[]];
-    expect(url).toContain("api.mainlayer.xyz/entitlements/check");
+    expect(url).toContain("api.mainlayer.fr/entitlements/check");
     expect(url).toContain("resource_id=r1");
     expect(url).toContain("payer_wallet=w1");
   });
@@ -308,7 +308,7 @@ describe("mainlayer client", () => {
 
     expect(resource.id).toBe("res_new");
     const [url, options] = vi.mocked(fetch).mock.calls[0] as [string, RequestInit];
-    expect(url).toContain("api.mainlayer.xyz/resources");
+    expect(url).toContain("api.mainlayer.fr/resources");
     expect(options.method).toBe("POST");
   });
 });

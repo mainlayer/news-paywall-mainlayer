@@ -1,6 +1,6 @@
 # The Machine Times
 
-A news site with per-article micropayments powered by [Mainlayer](https://mainlayer.xyz). Each article costs **$0.01** to read. AI agents can pay autonomously. Humans can too. No subscription, no account registration required.
+A news site with per-article micropayments powered by [Mainlayer](https://mainlayer.fr). Each article costs **$0.01** to read. AI agents can pay autonomously. Humans can too. No subscription, no account registration required.
 
 ## Concept
 
@@ -24,7 +24,7 @@ Any agent framework that can make HTTP requests can pay for articles:
 curl https://your-domain.com/api/articles
 
 # Step 2: Pay for the article you want
-curl -X POST https://api.mainlayer.xyz/pay \
+curl -X POST https://api.mainlayer.fr/pay \
   -H "Authorization: Bearer YOUR_WALLET_CREDENTIAL" \
   -H "Content-Type: application/json" \
   -d '{
@@ -43,7 +43,7 @@ When an agent requests an article without payment, the API returns HTTP 402 with
   "error": "payment_required",
   "resource_id": "res_abc123",
   "price_usdc": 0.01,
-  "pay_endpoint": "https://api.mainlayer.xyz/pay",
+  "pay_endpoint": "https://api.mainlayer.fr/pay",
   "message": "Pay via Mainlayer then retry with your wallet address."
 }
 ```
@@ -55,7 +55,7 @@ A well-implemented agent sees this 402, calls the `pay_endpoint` with its wallet
 ### Prerequisites
 
 - Node.js 22+
-- A [Mainlayer](https://mainlayer.xyz) account and API key
+- A [Mainlayer](https://mainlayer.fr) account and API key
 
 ### 1. Clone and install
 
@@ -125,7 +125,7 @@ List all articles with metadata and pricing.
   "total": 10,
   "agent_instructions": {
     "how_to_read": "Pick an article, pay via Mainlayer, then GET /api/articles/{slug}?wallet={your_wallet}",
-    "pay_endpoint": "https://api.mainlayer.xyz/pay",
+    "pay_endpoint": "https://api.mainlayer.fr/pay",
     "price_per_article_usdc": 0.01
   }
 }
@@ -158,7 +158,7 @@ Returns full article content if the wallet has paid. Returns 402 if not.
   "error": "payment_required",
   "resource_id": "res_abc123",
   "price_usdc": 0.01,
-  "pay_endpoint": "https://api.mainlayer.xyz/pay"
+  "pay_endpoint": "https://api.mainlayer.fr/pay"
 }
 ```
 
@@ -182,7 +182,7 @@ Or use `slug` instead of `resource_id`:
 }
 ```
 
-**Note:** AI agents with their own wallet credentials should call `https://api.mainlayer.xyz/pay` directly rather than going through this proxy.
+**Note:** AI agents with their own wallet credentials should call `https://api.mainlayer.fr/pay` directly rather than going through this proxy.
 
 ## Project Structure
 
@@ -233,6 +233,6 @@ npm run test:watch        # Watch mode
 ## Built With
 
 - [Next.js 15](https://nextjs.org) — framework
-- [Mainlayer](https://mainlayer.xyz) — payment infrastructure
+- [Mainlayer](https://mainlayer.fr) — payment infrastructure
 - [Tailwind CSS v4](https://tailwindcss.com) — styling
 - [Vitest](https://vitest.dev) — testing

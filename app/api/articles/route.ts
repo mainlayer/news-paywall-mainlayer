@@ -34,7 +34,7 @@ export async function GET() {
     agent_instructions: {
       how_to_read:
         "Pick an article, pay for access via Mainlayer, then GET /api/articles/{slug}?wallet={your_wallet}",
-      pay_endpoint: "https://api.mainlayer.xyz/pay",
+      pay_endpoint: "https://api.mainlayer.fr/pay",
       price_per_article_usdc: 0.01,
     },
   });

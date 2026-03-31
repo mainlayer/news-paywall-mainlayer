@@ -58,7 +58,7 @@ export function buildPaymentRequired(params: {
     error: "payment_required",
     resource_id: params.resource_id,
     price_usdc: params.price_usdc,
-    pay_endpoint: "https://api.mainlayer.xyz/pay",
+    pay_endpoint: "https://api.mainlayer.fr/pay",
     info_endpoint: `/api/articles/${params.slug}/info`,
     message: `This article costs $${params.price_usdc.toFixed(2)} USDC to read. Pay via Mainlayer then retry with your wallet address.`,
   };

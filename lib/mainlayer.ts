@@ -1,4 +1,4 @@
-const MAINLAYER_BASE_URL = "https://api.mainlayer.xyz";
+const MAINLAYER_BASE_URL = "https://api.mainlayer.fr";
 
 function getApiKey(): string {
   const key = process.env.MAINLAYER_API_KEY;

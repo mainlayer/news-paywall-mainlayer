@@ -358,7 +358,7 @@ export default function ArticlePage({
           </p>
           <pre className="text-green-400 text-xs font-mono leading-relaxed overflow-x-auto whitespace-pre-wrap">
 {`# 1. Pay for access
-curl -X POST https://api.mainlayer.xyz/pay \\
+curl -X POST https://api.mainlayer.fr/pay \\
   -H "Authorization: Bearer YOUR_WALLET_CREDENTIAL" \\
   -H "Content-Type: application/json" \\
   -d '{

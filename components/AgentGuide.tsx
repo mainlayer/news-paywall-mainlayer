@@ -29,7 +29,7 @@ export default function AgentGuide() {
           </p>
           <pre className="text-green-400 text-xs font-mono bg-gray-800 rounded p-2.5 overflow-x-auto whitespace-pre-wrap">
 {`curl -X POST \\
-  https://api.mainlayer.xyz/pay \\
+  https://api.mainlayer.fr/pay \\
   -H "Authorization: Bearer KEY" \\
   -d '{"resource_id":"...","payer_wallet":"..."}'`}
           </pre>

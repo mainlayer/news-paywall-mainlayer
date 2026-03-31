@@ -147,7 +147,7 @@ A payment-ready API returns a standardized response when a consumer lacks author
   "resource_id": "res_weather_realtime_v2",
   "price_usdc": 0.002,
   "description": "Real-time weather data for one location",
-  "pay_endpoint": "https://api.mainlayer.xyz/pay"
+  "pay_endpoint": "https://api.mainlayer.fr/pay"
 }
 \`\`\`
 
@@ -506,7 +506,7 @@ If you want to charge AI agents (or human-operated software) for access to indiv
 Every payable item in Mainlayer is a "resource" with a name, description, and price. Create resources via the API:
 
 \`\`\`bash
-curl -X POST https://api.mainlayer.xyz/resources \\
+curl -X POST https://api.mainlayer.fr/resources \\
   -H "Authorization: Bearer YOUR_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -524,7 +524,7 @@ Before serving protected content, check whether the requesting party has paid:
 
 \`\`\`typescript
 const response = await fetch(
-  \`https://api.mainlayer.xyz/entitlements/check?resource_id=\${resourceId}&payer_wallet=\${walletId}\`,
+  \`https://api.mainlayer.fr/entitlements/check?resource_id=\${resourceId}&payer_wallet=\${walletId}\`,
   { headers: { Authorization: \`Bearer \${process.env.MAINLAYER_API_KEY}\` } }
 );
 const { has_access } = await response.json();
@@ -541,7 +541,7 @@ When access is denied, return a consistent JSON structure that agents can parse:
   "error": "payment_required",
   "resource_id": "res_weather_realtime_v2",
   "price_usdc": 0.002,
-  "pay_endpoint": "https://api.mainlayer.xyz/pay",
+  "pay_endpoint": "https://api.mainlayer.fr/pay",
   "message": "Pay via Mainlayer then retry with your wallet ID"
 }
 \`\`\`
@@ -553,7 +553,7 @@ This structure is what well-implemented AI agents look for when they encounter a
 Agents (and your UI, if you have one) pay by posting to Mainlayer's /pay endpoint:
 
 \`\`\`bash
-curl -X POST https://api.mainlayer.xyz/pay \\
+curl -X POST https://api.mainlayer.fr/pay \\
   -H "Authorization: Bearer AGENT_WALLET_CREDENTIAL" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -569,7 +569,7 @@ On success, the agent retries the original request. Your entitlement check will 
 Mainlayer's analytics endpoint gives you real-time visibility into payment volume, top resources, and payer wallets:
 
 \`\`\`bash
-curl https://api.mainlayer.xyz/analytics \\
+curl https://api.mainlayer.fr/analytics \\
   -H "Authorization: Bearer YOUR_API_KEY"
 \`\`\`
 

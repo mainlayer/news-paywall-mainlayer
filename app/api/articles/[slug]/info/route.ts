@@ -41,7 +41,7 @@ export async function GET(
       step_1: "Pay for access using the pay_endpoint below",
       step_2: `POST ${process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000"}/api/pay with { resource_id, payer_wallet }`,
       step_3: `GET /api/articles/${slug}?wallet=<your_wallet> to read the full article`,
-      pay_endpoint: "https://api.mainlayer.xyz/pay",
+      pay_endpoint: "https://api.mainlayer.fr/pay",
       content_endpoint: `/api/articles/${slug}`,
     },
   });

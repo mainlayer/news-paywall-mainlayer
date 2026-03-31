@@ -25,7 +25,7 @@ export default function HomePage() {
               Powered by
             </span>
             <a
-              href="https://mainlayer.xyz"
+              href="https://mainlayer.fr"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs font-semibold text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-full border border-indigo-100"
@@ -65,7 +65,7 @@ export default function HomePage() {
                 Human readers pay with their wallet. AI agents pay
                 autonomously via the{" "}
                 <a
-                  href="https://mainlayer.xyz"
+                  href="https://mainlayer.fr"
                   className="text-indigo-600 hover:underline"
                 >
                   Mainlayer API
@@ -145,13 +145,13 @@ export default function HomePage() {
             The Machine Times &mdash; a demo of per-article micropayments
             powered by{" "}
             <a
-              href="https://mainlayer.xyz"
+              href="https://mainlayer.fr"
               className="text-indigo-500 hover:underline"
             >
               Mainlayer
             </a>
             . AI agent payments via{" "}
-            <code className="font-mono">https://api.mainlayer.xyz</code>.
+            <code className="font-mono">https://api.mainlayer.fr</code>.
           </p>
         </div>
       </footer>
